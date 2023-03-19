@@ -1,0 +1,166 @@
+{% extends "base.html" %}
+
+
+
+    {% block content %}
+
+
+  <!-- alert -->
+  <div class="modal">
+		<div class="modal-content">
+			<h2 id="modal-title">Alert Title</h2>
+			<p id="modal-message">Alert Message</p>
+			<button id="modal-button">OK</button>
+			<span class="close">&times;</span>
+		</div>
+	</div>
+ <!-- alert end -->
+
+
+
+
+
+
+
+
+
+
+
+    <div class="row">
+      <div class="col-sm-10">
+    <h3>Question No: {{obj.id}}</h3><br> {{obj.question|safe}}
+
+    
+        <br> <br><br>    
+      <form action= "" method="post"> 
+
+        {% csrf_token %}
+
+        <input  type="radio" name="button" id="button1" value="a">
+        <label class="bttn" for="button1">Answer A</label>
+
+        <input  type="radio" name="button" id="button2" value="b">
+        <label class="bttn" for="button2" >Answer B</label>
+
+        <input type="radio" name="button" id="button3" value="c">
+        <label  class="bttn" for="button3" >Answer C</label>
+
+        <input  type="radio" name="button" id="button4" value="d">
+        <label class="bttn" for="button4" >Answer D</label>
+        <br><br><br>
+        <hr>
+        <br>
+        <input hidden name="timer_one" type="text"  id="timer1" value="" placeholder="Time">
+        
+
+        <input type="submit" value = "NEXT" id="sumbit1" >
+
+      </form> 
+    </div>
+    <div class="col text-right"><div id="js_timer">
+      <h3>Time</h3>
+      <div id="timer">
+        
+        00:00
+      </div>
+      <br>
+      
+
+    </div>
+   
+    
+    
+  
+    
+    <div class="container">
+        <div class="row" >
+          
+          <div class="col-sm">
+            
+          </div>
+         
+        </div>
+      </div>
+    <br>
+    
+    <div id="answer">
+    </div>
+    
+    <br>
+   
+
+    
+
+
+
+    <br><br> <br><br>
+    
+
+
+
+    {% endblock %}
+
+    {% block script %}
+
+    <script>
+        function abc(){
+            document.getElementById("answer").innerHTML = `<h3>Answer:</h3><br><h4>Correct Answer : ({{obj.option}})</h4><br>{{obj.answer|safe}}`
+
+        }
+
+       
+        const startingMinutes = 00;
+        let time = startingMinutes * 60
+        
+        const countdownEl = document.getElementById('timer');
+        const timer1 = document.getElementById('timer1');
+
+        setInterval(updateCountdown,1000);
+
+        function updateCountdown() {
+          const minutes = Math.floor(time/60);
+          let seconds = time % 60;
+
+          countdownEl.innerHTML= `${minutes}: ${seconds}`;
+          timer1.value = `${minutes}: ${seconds}`;          
+          time ++;
+        }
+
+        // alert("Please Note: Quiz Starts as you click 'ok' ,you will be timed for each question.")
+      
+        function showModal(title, message) {
+    document.getElementById("modal-title").innerHTML = title;
+    document.getElementById("modal-message").innerHTML = message;
+    var modal = document.querySelector(".modal");
+    var button = document.getElementById("modal-button");
+    var close = document.querySelector(".close");
+
+    modal.style.display = "block";
+
+    button.onclick = function() {
+        modal.style.display = "none";
+    };
+
+    close.onclick = function() {
+        modal.style.display = "none";
+    };
+}
+
+  showModal("Quizji Quiz!", "Please Note: Click 'ok' to start quiz,your responses will be calculated and how much time you will be taking will be recorded.");
+    </script>
+
+    
+    
+
+
+
+    {% endblock %}
+
+
+
+
+
+
+    
+    
+    

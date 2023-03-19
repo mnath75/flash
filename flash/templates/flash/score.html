@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+
+
+<h2>Score:</h2>
+<hr>
+<br>
+<br>
+<p><h3>Total Time: {{hours|floatformat:"0"}} Hrs : {{minutes|floatformat:"0"}} Mins : {{seconds|floatformat:"0"}} Secs</h3></p>
+<br>
+<hr>
+<br>
+
+<h3>Right Answers : {{count}} <a href="{% url 'correct_answer' id=ques_id %}" class="btn btn-primary" style="margin-left: 300px;">View Correct Answers</a></h3> 
+<br>
+<h3>Wrong Answers : {{wrong}} <a href="{% url 'wrong_answer' id=ques_id %}" class="btn btn-primary" style="margin-left: 280px;">View Wrong Answers</a></h3>
+<br>
+<h3>Total Question : {{len_question}}</h3>
+
+{% endblock %}
+
+
+
+
+
+

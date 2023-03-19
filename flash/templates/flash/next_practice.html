@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+
+
+
+    {% block content %}
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"/> -->
+
+    
+    <h3>Question No: {{obj.id}}</h3><br> {{obj.question|safe}}
+
+    <form action= "{% url 'next_practice' id=obj.id %}" method="post">
+      {% csrf_token %}
+        <br><br><br>
+        <input type="radio" name="button" id="button1" value="a">
+        <label class="bttn" for="button1">Answer A</label>
+
+        <input type="radio" name="button" id="button2" value="b">
+        <label class="bttn" for="button2" style="margin-left: 100px;">Answer B</label>
+
+        <input type="radio" name="button" id="button3" value="c">
+        <label class="bttn" for="button3" style="margin-left: 100px;">Answer C</label>
+
+        <input type="radio" name="button" id="button4" value="d">
+        <label class="bttn" for="button4" style="margin-left: 100px;">Answer D</label>
+
+        <br><br>
+        <hr>
+        
+        <input type="submit" value = "NEXT" id="sumbit1" >
+    </form>
+   
+    <br>
+    <!-- <div class="container">
+    <a href="#" class="btn btn-success btn-lg">Solution</a>
+    <a href="#" class="btn btn-warning btn-lg float-right">Next Question</a>
+    </div> -->
+    <div class="container">
+        <div class="row">
+          <div class="col-sm">
+            <a href="#" class="btn btn-success btn-lg" onclick="abc()">Solution</a>
+          </div>
+          <div class="col-sm">
+            
+          </div>
+          <!-- <div class="col-sm">
+            <a href="{% url 'next_question' obj.id %}" class="btn btn-warning btn-lg float-right">Next Question</a>
+          </div> -->
+        </div>
+      </div>
+    <br>
+    <hr>
+    <div id="answer">
+    </div>
+    <!-- <h3>Answer:</h3> -->
+    <br>
+    <!-- {{obj.answer|safe}} -->
+
+    
+
+
+
+    <br><br> <br><br>
+    
+
+
+
+    {% endblock%}
+
+    {% block script %}
+    <script>
+        function abc(){
+            document.getElementById("answer").innerHTML = `<h3>Answer:</h3><br><h4>Correct Answer : ({{obj.option}})</h4><br>{{obj.answer|safe}}`
+
+        }
+
+    </script>
+
+    {% endblock %}
+
+
+    
+    
+    

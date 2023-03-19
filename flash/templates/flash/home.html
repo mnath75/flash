@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <br>
+    <h1>Welcome to Quizji App</h1>
+    <hr>
+
+    <br>
+    <h3>How can these be used for learning?</h3>
+    <br>
+    <p>Flash cards can really give your learning a whole new dimension by speeding things up for your own good.They can be used to learn virtually ANY subject in general, be it history, geography, biology, mathematics, physics, chemistry, foreign languages, English vocabulary…you name it; they’ve got it.</p>
+    <br><br>
+    {% if request.user.is_superuser %}
+
+    {% else %}
+
+    
+    
+    <div class="container">
+        <div class="row" >
+          <div class="col-sm">
+            <a href="{% url 'flashcard' %}" class="btn btn-primary btn-lg" >Flashcards</a>
+          </div>
+          <div class="col-sm">
+            <!-- <a href="{% url 'practice_form' id=1%}" class="btn btn-primary btn-lg" >Start Practice</a> -->
+          </div>
+          <div class="col-sm">
+            
+          </div>
+          <div class="col-sm">
+            <!-- <a href="{% url 'exam_form' id=1%}" class="btn btn-primary btn-lg float-right"  >Start Quiz</a> -->
+          </div>
+        </div>
+      </div>
+    
+    
+    
+    
+    {% endif %}
+
+    
+{% endblock %}

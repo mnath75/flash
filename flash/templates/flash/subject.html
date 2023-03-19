@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+
+{% if id == 1 %}
+<h1>Biology</h1>
+<hr>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">Serial No.</th>
+          <th scope="col">Chapter Name</th>
+          <th scope="col">Practice</th>
+          <th scope="col">Quiz</th>          
+        </tr>
+      </thead>
+      <tbody>
+    {% for o in obj %}  
+    <tr> 
+    <td><b>{{forloop.counter}}.</b></td>
+    <td> <h5> {{o.name}}</h5> </td>
+    <td><a href="{% url 'practice_form' id=o.id %}" class=" btn btn-primary">Start Practice</a></td>
+    <td><a href="{% url 'exam_form' id=o.id %}" class="btn btn-primary">Start Quiz</a></td>  
+     {% endfor %}
+    </tr>   
+    </tbody>
+</table>
+{% elif id == 2 %}
+<h1>Physics</h1>    
+<hr>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">Serial No.</th>
+          <th scope="col">Chapter Name</th>
+          <th scope="col">Practice</th>
+          <th scope="col">Quiz</th>          
+        </tr>
+      </thead>
+      <tbody>
+    {% for o in obj %}  
+    <tr> 
+    <td><b>{{forloop.counter}}.</b></td>
+    <td> <h5> {{o.name}}</h5> </td>
+    <td><a href="{% url 'practice_form' id=o.id %}" class=" btn btn-primary">Start Practice</a></td>
+    <td><a href="{% url 'exam_form' id=o.id %}" class="btn btn-primary">Start Quiz</a></td>  
+     {% endfor %}
+    </tr>   
+    </tbody>
+</table>
+
+
+{% else %}
+<h1>Chemistry</h1>
+<hr>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">Serial No.</th>
+          <th scope="col">Chapter Name</th>
+          <th scope="col">Practice</th>
+          <th scope="col">Quiz</th>          
+        </tr>
+      </thead>
+      <tbody>
+    {% for o in obj %}  
+    <tr> 
+    <td><b>{{forloop.counter}}.</b></td>
+    <td> <h5> {{o.name}}</h5> </td>
+    <td><a href="{% url 'practice_form' id=o.id %}" class=" btn btn-primary">Start Practice</a></td>
+    <td><a href="{% url 'exam_form' id=o.id %}" class="btn btn-primary">Start Quiz</a></td>  
+     {% endfor %}
+    </tr>   
+    </tbody>
+</table>
+{% endif %}
+
+
+
+
+{% endblock %}
