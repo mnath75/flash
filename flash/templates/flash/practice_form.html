@@ -1,0 +1,138 @@
+{% extends "base.html" %}
+
+
+
+    {% block content %}
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"/> -->
+
+
+    <!-- alert -->
+    
+  <div class="modal">
+		<div class="modal-content">
+			<h2 id="modal-title">Alert Title</h2>
+			<p id="modal-message">Alert Message</p>
+			<button id="modal-button">OK</button>
+			<span class="close">&times;</span>
+		</div>
+	</div>
+
+ <!-- alert end -->
+    
+    <h3>Question No: {{obj.id}}</h3><br> {{obj.question|safe}}
+
+    
+        <br> <br><br>    
+      <form action= "{% url 'next_practice' id=obj.id %}" method="post"> 
+
+        {% csrf_token %}
+
+        <input  type="radio" name="button" id="button1" value="a">
+        <label class="bttn" for="button1">Answer A</label>
+
+        <input  type="radio" name="button" id="button2" value="b">
+        <label class="bttn" for="button2" >Answer B</label>
+
+        <input type="radio" name="button" id="button3" value="c">
+        <label  class="bttn" for="button3" >Answer C</label>
+
+        <input  type="radio" name="button" id="button4" value="d">
+        <label class="bttn" for="button4" >Answer D</label>
+        <br><br><br>
+        <hr>
+        <br>
+        <br>
+
+        <input type="submit" value = "NEXT" id="sumbit1" >
+
+      </form>  
+
+        
+   
+    
+    
+    <!-- <div class="container">
+    <a href="#" class="btn btn-success btn-lg">Solution</a>
+    <a href="#" class="btn btn-warning btn-lg float-right">Next Question</a>
+    </div> -->
+    
+    <div class="container">
+        <div class="row" >
+          <div class="col-sm">
+            <a  href="#" class="btn btn-success btn-lg" onclick="abc()">Solution</a>
+          </div>
+          <div class="col-sm">
+            
+          </div>
+          <!-- <div class="col-sm">
+            <a href="{% url 'next_question' obj.id %}" class="btn btn-warning btn-lg float-right">Next Question</a>
+          </div> -->
+        </div>
+      </div>
+    <br>
+    <hr>
+    <div id="answer">
+    </div>
+    <!-- <h3>Answer:</h3> -->
+    <br>
+    <!-- {{obj.answer|safe}} -->
+
+    
+
+
+
+    <br><br> <br><br>
+    
+
+
+
+    {% endblock %}
+
+    {% block script %}
+
+    <script>
+        function abc(){
+            document.getElementById("answer").innerHTML = `<h3>Answer:</h3><br><h4>Correct Answer : ({{obj.option}})</h4><br>{{obj.answer|safe}}`
+
+        }
+
+        function showModal(title, message) {
+    document.getElementById("modal-title").innerHTML = title;
+    document.getElementById("modal-message").innerHTML = message;
+    var modal = document.querySelector(".modal");
+    var button = document.getElementById("modal-button");
+    var close = document.querySelector(".close");
+
+    modal.style.display = "block";
+
+    button.onclick = function() {
+        modal.style.display = "none";
+    };
+
+    close.onclick = function() {
+        modal.style.display = "none";
+    };
+}
+
+
+      
+        
+        showModal("Quizji Practice", "You are going to start Practice, solutions are provided.");
+
+    </script>
+    
+    
+    
+
+
+
+    {% endblock %}
+
+
+
+
+
+
+    
+    
+    

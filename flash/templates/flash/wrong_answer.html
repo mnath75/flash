@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+
+
+{% block content %}
+
+<div class="conatiner">
+    <br>
+    <br>
+<h1>Wrong Answers</h1>
+<hr>
+    {% for q in ques %}
+
+    <h3>Ques{{q.id}}:</h3> {{q.question|safe}}
+   <h3>Ans. ({{q.option}})</h3><p> {{q.answer|safe}}</p> 
+   <hr>
+    {% endfor %}
+
+</div>
+
+{% endblock %}

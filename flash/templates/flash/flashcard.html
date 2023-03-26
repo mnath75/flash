@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+<br>
+<div class="container">
+<h1>Flashcards</h1>
+<hr>
+
+{% for o in obj %}
+
+<a href="{% url 'filter_chapter' id=o.id %}" class="btn btn-primary btn-lg" style="margin-top: 20px;margin-left: 50px;">{{o.title}} </a>
+
+
+
+{% endfor %}
+</div>
+
+{% endblock%}
